@@ -48,23 +48,23 @@ public class NetworkManager {
     public void init(Application app) {
         this.application = app;
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            NetworkCallbackImpl networkCallback = new NetworkCallbackImpl();
-            NetworkRequest.Builder builder = new NetworkRequest.Builder();
-            NetworkRequest request = builder.build();
-            ConnectivityManager connmagr = (ConnectivityManager) NetworkManager.getInstance()
-                    .getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
-            if (connmagr != null) {
-                connmagr.registerNetworkCallback(request, networkCallback);
-                //                connmagr.unregisterNetworkCallback(networkCallback);
-            }
-
-        } else {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            NetworkCallbackImpl networkCallback = new NetworkCallbackImpl();
+//            NetworkRequest.Builder builder = new NetworkRequest.Builder();
+//            NetworkRequest request = builder.build();
+//            ConnectivityManager connmagr = (ConnectivityManager) NetworkManager.getInstance()
+//                    .getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+//            if (connmagr != null) {
+//                connmagr.registerNetworkCallback(request, networkCallback);
+//                //                connmagr.unregisterNetworkCallback(networkCallback);
+//            }
+//
+//        } else {
             //广播注册
             IntentFilter filter = new IntentFilter();
             filter.addAction(Constants.ANDROID_NET_ACTION);
             application.registerReceiver(receiver, filter);
-        }
+//        }
     }
 
     public void registerObserver(Object register) {
